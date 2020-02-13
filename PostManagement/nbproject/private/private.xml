@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3">
+        <file>
+            <url>src/com/swr/test/test.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>30</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/com/swr/Service/ServiceComments.java</url>
+            <bookmark id="3">
+                <name/>
+                <line>27</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/com/swr/Service/ServicePosts.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>139</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Soulah/Documents/NetBeansProjects/PostManagement/src/com/swr/Service/ServicePosts.java</file>
+            <file>file:/C:/Users/Soulah/Documents/NetBeansProjects/PostManagement/src/com/swr/Service/ServiceComments.java</file>
+            <file>file:/C:/Users/Soulah/Documents/NetBeansProjects/PostManagement/src/com/swr/Utilis/DataBase.java</file>
+            <file>file:/C:/Users/Soulah/Documents/NetBeansProjects/PostManagement/src/com/swr/Entite/Posts.java</file>
+            <file>file:/C:/Users/Soulah/Documents/NetBeansProjects/PostManagement/src/com/swr/Entite/Comments.java</file>
+            <file>file:/C:/Users/Soulah/Documents/NetBeansProjects/PostManagement/src/com/swr/test/test.java</file>
+        </group>
+    </open-files>
+</project-private>
