@@ -6,6 +6,7 @@
 package com.swr.GUI.Front;
 
 import com.swr.Entite.Housing;
+import com.swr.Entite.Rating;
 import com.swr.Service.HousingService;
 import static com.swr.Service.HousingService.hs;
 import com.swr.Service.RatingService;
@@ -21,6 +22,7 @@ import com.teamdev.jxmaps.MapStatus;
 import com.teamdev.jxmaps.MapViewOptions;
 import com.teamdev.jxmaps.Marker;
 import com.teamdev.jxmaps.javafx.MapView;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -30,15 +32,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -79,6 +86,11 @@ public class HousingFrontController implements Initializable {
     private TableColumn<?, ?> col_NbRes;
     @FXML
     private TableColumn<?,?> col_R;
+    @FXML
+    private Slider ratingSlider;
+    @FXML
+    private TextField tffeed;
+    RatingService Rs= RatingService.getInstance();
     /**
      * Initializes the controller class.
      */
@@ -157,6 +169,32 @@ public class HousingFrontController implements Initializable {
  
                 newWindow.show();
     
+    }
+
+    @FXML
+    private void detailH(ActionEvent event)  throws IOException {
+        
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("HousingDetails.fxml"));
+        tableViewParent.setUserData(tableh.getSelectionModel().getSelectedItem());
+        Scene tableViewScene = new Scene(tableViewParent,1050, 700);
+        
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(tableViewScene);
+        window.show();
+    
+    
+    }
+
+    @FXML
+    private void submitR(ActionEvent event) throws SQLException {
+        int rat= (int) ratingSlider.getValue();
+        Rating r= new Rating(tableh.getSelectionModel().getSelectedItem().getIdh(), 0, tffeed.getText(),rat);
+        Rs.addRating(r);
+        initList();
+        tffeed.setText("");
+        ratingSlider.setValue(1);
     }
    
     

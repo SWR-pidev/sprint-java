@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -150,7 +151,7 @@
             </Pane>
             <Pane layoutX="129.0" layoutY="103.0" prefHeight="582.0" prefWidth="920.0" stylesheets="@fullpackstyling.css">
                <children>
-                  <Button fx:id="Detailsbtn" layoutX="739.0" layoutY="63.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="More Details" textFill="WHITE">
+                  <Button fx:id="Detailsbtn" layoutX="739.0" layoutY="63.0" mnemonicParsing="false" onAction="#detailH" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="More Details" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -165,9 +166,9 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Slider blockIncrement="1.0" layoutX="728.0" layoutY="274.0" max="5.0" min="1.0" prefHeight="19.0" prefWidth="152.0" showTickLabels="true" value="1.0" />
-                  <Label alignment="CENTER" layoutX="720.0" layoutY="238.0" prefHeight="17.0" prefWidth="169.0" text="Rate this housing" textAlignment="CENTER" />
-                  <Button fx:id="subBtn" layoutX="778.0" layoutY="306.0" mnemonicParsing="false" text="Submit" />
+                  <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="728.0" layoutY="274.0" max="5.0" min="1.0" prefHeight="19.0" prefWidth="152.0" showTickLabels="true" value="1.0" />
+                  <Label alignment="CENTER" layoutX="720.0" layoutY="238.0" prefHeight="17.0" prefWidth="169.0" text="Rate housing" textAlignment="CENTER" />
+                  <Button fx:id="subBtn" layoutX="777.0" layoutY="348.0" mnemonicParsing="false" onAction="#submitR" text="Submit" />
                   <TableView fx:id="tableh" layoutX="14.0" layoutY="35.0" prefHeight="521.0" prefWidth="691.0">
                     <columns>
                       <TableColumn fx:id="col_Name" prefWidth="143.99998474121094" text="Name" />
@@ -178,6 +179,7 @@
                         <TableColumn fx:id="col_R" prefWidth="91.2000732421875" text="Rating" />
                     </columns>
                   </TableView>
+                  <TextField fx:id="tffeed" layoutX="729.0" layoutY="306.0" promptText="Feedback..." />
                </children>
             </Pane>
          </children>
