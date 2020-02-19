@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -190,42 +191,48 @@
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" stylesheets="@style.css">
                <children>
-                  <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #f1f1f1; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <Label layoutX="57.0" layoutY="25.0" text="Welcome To SWR Dashboard" textFill="#0571ba">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField layoutX="347.0" layoutY="537.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #f1f1f1; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="498.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@./images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="Newview" layoutX="94.0" layoutY="164.0" prefHeight="200.0" prefWidth="303.0">
+                  <TableView fx:id="Newview" layoutX="24.0" layoutY="6.0" prefHeight="200.0" prefWidth="425.0">
                     <columns>
                       <TableColumn fx:id="cl_tit" prefWidth="75.0" text="Title" />
-                      <TableColumn fx:id="cl_desc" prefWidth="75.0" text="Description" />
-                        <TableColumn fx:id="cl_date" prefWidth="75.0" text="Post date" />
-                        <TableColumn fx:id="cl_cat" prefWidth="75.0" text="Categorie" />
+                      <TableColumn fx:id="cl_desc" prefWidth="145.0" text="Description" />
+                        <TableColumn fx:id="cl_date" prefWidth="106.0" text="Post date" />
+                        <TableColumn fx:id="cl_cat" prefWidth="97.0" text="Categorie" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btncat" layoutX="460.0" layoutY="49.0" mnemonicParsing="false" onAction="#categ" prefHeight="25.0" prefWidth="100.0" text="Categorie" />
-                  <Label layoutX="570.0" layoutY="135.0" opacity="0.67" prefHeight="25.0" prefWidth="92.0" text="Add News">
+                  <Button fx:id="btncat" layoutX="631.0" layoutY="20.0" mnemonicParsing="false" onAction="#categ" prefHeight="25.0" prefWidth="100.0" text="Categorie" />
+                  <Label layoutX="569.0" layoutY="106.0" opacity="0.67" prefHeight="25.0" prefWidth="92.0" text="Add News">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="titre" layoutX="570.0" layoutY="179.0" promptText="Title" />
-                  <TextField fx:id="desc" layoutX="570.0" layoutY="216.0" promptText="Description" />
-                  <Button fx:id="addbtn" layoutX="719.0" layoutY="292.0" mnemonicParsing="false" onAction="#ajouter" text="Add" />
-                  <ComboBox fx:id="nomcat" layoutX="569.0" layoutY="251.0" prefWidth="150.0" promptText="Choose Categorie" />
-                  <Line endX="100.0" endY="-27.0" layoutX="436.0" layoutY="192.0" startX="100.0" startY="317.0" />
-                  <Label layoutX="570.0" layoutY="324.0" opacity="0.67" prefHeight="27.0" prefWidth="115.0" text="Delete News">
+                  <TextField fx:id="titre" layoutX="570.0" layoutY="140.0" promptText="Title" />
+                  <TextField fx:id="desc" layoutX="570.0" layoutY="177.0" promptText="Description" />
+                  <Button fx:id="addbtn" layoutX="730.0" layoutY="252.0" mnemonicParsing="false" onAction="#ajouter" text="Add" />
+                  <ComboBox fx:id="nomcat" layoutX="569.0" layoutY="215.0" prefWidth="150.0" promptText="Choose Categorie" />
+                  <Line endX="100.0" endY="-27.0" layoutX="429.0" layoutY="192.0" startX="100.0" startY="317.0" />
+                  <Label layoutX="566.0" layoutY="288.0" opacity="0.67" prefHeight="27.0" prefWidth="115.0" text="Delete News">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="delbtn" layoutX="590.0" layoutY="364.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="67.0" text="Delete" />
+                  <Button fx:id="delbtn" layoutX="706.0" layoutY="325.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="67.0" text="Delete" />
+                  <Label layoutX="566.0" layoutY="364.0" opacity="0.67" prefHeight="27.0" prefWidth="115.0" text="Update News">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="descup" layoutX="570.0" layoutY="440.0" promptText="Description" />
+                  <TextField fx:id="titup" layoutX="570.0" layoutY="401.0" promptText="Title" />
+                  <ComboBox fx:id="nomcat1" layoutX="569.0" layoutY="477.0" prefWidth="150.0" promptText="Choose Categorie" />
+                  <Button layoutX="719.0" layoutY="510.0" mnemonicParsing="false" onAction="#update" text="Update" />
+                  <PieChart fx:id="chart" layoutX="24.0" layoutY="236.0" prefHeight="256.0" prefWidth="280.0" />
+                  <Line endX="100.0" endY="49.0" layoutX="219.0" layoutY="181.0" startX="100.0" startY="317.0" />
                </children>
             </Pane>
          </children>

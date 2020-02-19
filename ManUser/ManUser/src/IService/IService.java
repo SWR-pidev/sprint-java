@@ -20,9 +20,10 @@ public interface IService<T> {
     ObservableList<User> readAll() throws SQLException;
     List<T> rechercheavance(String n) throws SQLException;
     List<T> tri() throws SQLException;
-    List<T> rechercheentredate(String d1 , String d2) throws SQLException;
+    ObservableList<T> rechercheentredate(String d1 , String d2) throws SQLException;
     int moyenne() throws SQLException;
     int auth(String mail,String pwd) throws SQLException;
+    int preauth(String mail,String pwd) throws SQLException;
     String forgotpasss(String mail) throws SQLException;
     String getUser(String mail) throws SQLException;
     User SerachUser(String username) throws SQLException;

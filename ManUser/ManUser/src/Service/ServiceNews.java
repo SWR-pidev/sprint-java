@@ -34,20 +34,17 @@ public class ServiceNews implements IServiceNew<News> {
     public void ajouter(News n) throws SQLException {
 ste = con.createStatement();
         String requeteInsert = "INSERT INTO `swr`.`news` (`idn`, `titre`, `description`, `datepub`, `nomcat`) VALUES (NULL, '" + n.getTitre() + "', '" + n.getDesc() + "',sysdate(),'" + n.getNomcat() + "');";
-        JOptionPane.showMessageDialog(null,"News ajouté avec succées");
         ste.executeUpdate(requeteInsert);    }
 
     @Override
     public boolean delete(String titre) throws SQLException {
 PreparedStatement pre=con.prepareStatement("DELETE FROM news WHERE titre='"+titre+"' ;");
-JOptionPane.showMessageDialog(null,"News supprimé avec succées");
         pre.executeUpdate();
         return true;    }
 
     @Override
     public boolean update(String titre1, String titre, String description,String nomcat) throws SQLException {
-PreparedStatement pre=con.prepareStatement("UPDATE news SET titre= '" +titre+ "',description='"+description+"',nomcat= '"+nomcat+"'WHERE titre='"+titre1+"' ;");
-JOptionPane.showMessageDialog(null,"News modifié avec succées");            
+PreparedStatement pre=con.prepareStatement("UPDATE news SET titre= '" +titre+ "',description='"+description+"',nomcat= '"+nomcat+"'WHERE titre='"+titre1+"' ;");           
 pre.executeUpdate();
        
         return true;      }
@@ -100,5 +97,14 @@ List<News> arr=new ArrayList<>();
         float s=((i/k)*100);
         return s;
     }
+
+    @Override
+    public ResultSet satistique() throws SQLException {
+         //To change body of generated methods, choose Tools | Templates.ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select nomcat,count(*)total from news group by nomcat ");
+    return rs;
+    }
+    
+    
     
 }

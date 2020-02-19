@@ -121,10 +121,16 @@ JOptionPane.showMessageDialog(null,"User modifié avec succées");
     }
 
     @Override
-    public List<User> rechercheentredate(String d1, String d2) throws SQLException {
-    List<User> arr=new ArrayList<>();
+    public ObservableList<User> rechercheentredate(String d1, String d2) throws SQLException {
+    ObservableList<User> arr=FXCollections.observableArrayList();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from user where dateins between '" + d1 + "' AND '" + d2 + "' ;");
+    String sql="select * from user";
+    if((!d1.isEmpty())&&(!d2.isEmpty()))
+    {
+        sql="select * from user where dateins between '" + d1 + "' AND '" + d2 + "'";
+    }
+   
+    ResultSet rs=ste.executeQuery(sql);
      while (rs.next()) {                
                int id=rs.getInt(1);
                String nom=rs.getString("nom");
@@ -237,6 +243,31 @@ JOptionPane.showMessageDialog(null,"User modifié avec succées");
     return u;
     }
     return null;
+    }
+
+    @Override
+    public int preauth(String mail, String pwd) throws SQLException {
+int i=0;
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("SELECT * FROM user WHERE email='"+mail+"'AND password='"+pwd+"' ;");
+        while (rs.next()) {
+              int id=rs.getInt(1);
+               String nom=rs.getString("nom");
+               String prenom=rs.getString(3);
+               String country=rs.getString("country");
+               String tel=rs.getString(7);
+               String username=rs.getString("username");
+               String roles=rs.getString("roles");
+               if("user".equals(roles))
+               {i++;}
+     }
+        if(i==1)
+        {
+        return 1;
+        }
+        else{
+        return 0;
+        }
     }
 
   

@@ -1,0 +1,9 @@
+String mai = mail.getText();
+    ServiceUser user = new ServiceUser();
+    String a=user.forgotpasss(mai);
+    Email email = new Email("montassar43@gmail.com","montassar007");
+        email.setFrom("montassar43@gmail.com", "Solidarity With Refugees");
+        email.setSubject("Get your password");
+        email.setContent("<h1> Your Password is</h1>"+a, "text/html");
+        email.addRecipient(mai);
+        email.send();

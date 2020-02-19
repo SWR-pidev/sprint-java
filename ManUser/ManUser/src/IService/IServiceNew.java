@@ -5,6 +5,7 @@
  */
 package IService;
 import Entite.News;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.ObservableList;
@@ -19,5 +20,5 @@ public interface IServiceNew<T> {
     ObservableList<News> readAll() throws SQLException;  
     List<T> nouveaute() throws SQLException;
     float stats(String nomcat) throws SQLException;
-    
+    ResultSet satistique() throws SQLException;
 }

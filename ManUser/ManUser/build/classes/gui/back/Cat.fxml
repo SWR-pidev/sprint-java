@@ -190,11 +190,6 @@
             <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" stylesheets="@style.css">
                <children>
                   <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #f1f1f1; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <Label layoutX="57.0" layoutY="25.0" text="Welcome To SWR Dashboard" textFill="#0571ba">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
-                     </font>
-                  </Label>
                   <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@./images/icons8_Search_52px.png" />

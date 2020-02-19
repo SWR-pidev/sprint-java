@@ -66,8 +66,18 @@ public class LoginController implements Initializable {
             String mai = mail.getText();
             String pwd1 = pwd.getText();
             ServiceUser user = new ServiceUser();
-            int i=user.auth(mai, pwd1);
+            int k=user.preauth(mai, pwd1);
             String u=user.getUser(mai);
+            if(k==1)
+            {
+            FXMLLoader fxml=new FXMLLoader(getClass().getResource("Homepage.fxml"));
+        Parent root=fxml.load();
+        mail.getScene().setRoot(root);
+        HomepageController rc=fxml.getController();
+        rc.setLabelUser(u);
+            }
+            else{
+            int i=user.auth(mai, pwd1);
             if(i==1)
             {
         FXMLLoader fxml=new FXMLLoader(getClass().getResource("Homepage.fxml"));
@@ -78,15 +88,15 @@ public class LoginController implements Initializable {
             }
             else if (i==2)
             {
-           /* FXMLLoader fxml=new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
+            FXMLLoader fxml=new FXMLLoader(getClass().getResource("/Home.fxml"));
         Parent root=fxml.load();
         mail.getScene().setRoot(root);
-        HomeController rc=fxml.getController();*/
+        HomeController rc=fxml.getController();
             }
             else{
-            JOptionPane.showMessageDialog(null,"User n'existe pas !!");
+            JOptionPane.showMessageDialog(null,"User doesn't exist !!");
             }
-            
+            }
             
     }
 

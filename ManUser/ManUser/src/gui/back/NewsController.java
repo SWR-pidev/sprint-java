@@ -12,6 +12,7 @@ import Service.ServiceCategorie;
 import Service.ServiceNews;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -23,6 +24,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -36,6 +39,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Asus X550V
  */
+
 public class NewsController implements Initializable {
 
     @FXML
@@ -87,15 +91,59 @@ public class NewsController implements Initializable {
     private ComboBox<Categorie> nomcat;
     @FXML
     private Button delbtn;
+    @FXML
+    private TextField descup;
+    @FXML
+    private TextField titup;
+    @FXML
+    private ComboBox<Categorie> nomcat1;
+    @FXML
+    private PieChart chart;
 
     /**
      * Initializes the controller class.
      */
+    
+    public void rafraichir()
+    {
+          ResultSet stat=null;
+          
+        try {
+            stat=news.satistique();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        chart.getData().clear();
+        
+        try {
+            while(stat.next())
+            {
+                
+                
+                chart.getData().add(new PieChart.Data(stat.getString(1),stat.getDouble(2)));
+            }
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
+     }
+        
+   
+            
+        
+        
+        
+        
+    
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         initTable();
         combo();
+        combo1();
+        this.rafraichir();
  
     }    
 
@@ -111,6 +159,15 @@ public class NewsController implements Initializable {
         try {
             ObservableList<Categorie> list=cat.affichecat();
             nomcat.setItems(list);
+        } catch (SQLException ex) {
+            Logger.getLogger(NewsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void combo1()
+    {
+        try {
+            ObservableList<Categorie> list=cat.affichecat();
+            nomcat1.setItems(list);
         } catch (SQLException ex) {
             Logger.getLogger(NewsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -146,6 +203,7 @@ public class NewsController implements Initializable {
             news.ajouter(u);
             initTable();
             clearAll();
+            this.rafraichir();
         } catch (SQLException ex) {
             Logger.getLogger(NewsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -158,6 +216,7 @@ public class NewsController implements Initializable {
         if (!c.equals(null)) 
         news.delete(c.getTitre());
         initTable();
+        this.rafraichir();
     }
     private void clear(ActionEvent event) {
         clearAll();
@@ -167,6 +226,25 @@ public class NewsController implements Initializable {
         titre.setText("");
         desc.setText("");
         nomcat.setValue(null);
+        titup.setText("");
+        descup.setText("");
+        nomcat1.setValue(null);
+    }
+
+    @FXML
+    private void update(ActionEvent event) {
+    
+        try {
+            News c=Newview.getSelectionModel().getSelectedItem();
+            news.update(c.getTitre(), titup.getText(), descup.getText(), nomcat1.getValue().getNomcat());
+            initTable();
+        clearAll();
+        this.rafraichir();
+                     } catch (SQLException ex) {
+            Logger.getLogger(NewsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     
