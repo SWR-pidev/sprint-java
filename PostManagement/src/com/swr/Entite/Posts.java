@@ -20,6 +20,17 @@ public class Posts {
     
     /************ constructors **********/
     
+    public Posts(String contenuP, int iduser) {
+        this.idP = idP;
+        this.nbcmt = nbcmt;
+        this.views = views;
+        this.likes = likes;
+        this.report = report;
+        this.iduser = iduser;
+        this.contenuP = contenuP;
+        this.dateP = dateP;
+    }  
+
     public Posts(int idP, String contenuP, int nbcmt, int views, int likes, int report, int iduser) {
         this.idP = idP;
         this.nbcmt = nbcmt;
@@ -27,8 +38,8 @@ public class Posts {
         this.likes = likes;
         this.report = report;
         this.iduser = iduser;
-         this.contenuP = contenuP;
-         this.dateP = dateP;
+        this.contenuP = contenuP;
+        this.dateP = dateP;
     }  
     
     public Posts(String contenuP, int nbcmt, int views, int likes, int report, int iduser) {

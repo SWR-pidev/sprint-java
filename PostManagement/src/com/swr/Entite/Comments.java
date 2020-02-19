@@ -16,6 +16,11 @@ public class Comments {
     String contenuC;
     Date dateC;
 
+    public Comments(String contenuC,int iduser) {
+        this.iduser = iduser;
+        this.contenuC = contenuC;
+    }
+
     public Comments(int idC, int idP, String contenuC, Date dateC, int reportC, int iduser) {
         this.idC = idC;
         this.idP = idP;

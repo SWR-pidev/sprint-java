@@ -6,16 +6,18 @@
 package com.swr.Service;
 
 
-import com.email.durgesh.Email;
+//import com.email.durgesh.Email;
 import com.swr.Entite.Posts;
 import com.swr.IService.IService;
 import com.swr.Service.ServicePosts;
-import com.swr.Utilis.DataBase;
+import com.swr.Utils.DataBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -73,12 +75,12 @@ import java.util.logging.Logger;
     }
 
    @Override
-    public List<Posts> readAll() throws SQLException {
-    List<Posts> arr=new ArrayList<>();
+    public ObservableList<Posts> readAll() throws SQLException {
+ObservableList arr= FXCollections.observableArrayList();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from posts");
      while (rs.next()) {                
-               int idP=rs.getInt(1);
+               int idP=rs.getInt("idP");
                String contenuP=rs.getString("contenuP");
                int nbcmt=rs.getInt("nbcmt");
                int views=rs.getInt("views");
@@ -104,8 +106,8 @@ import java.util.logging.Logger;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public List<Posts> recherche(String aa) throws SQLException{
-         List<Posts> fish=new ArrayList<>();
+    public ObservableList<Posts> recherche(String aa) throws SQLException{
+         ObservableList<Posts> fish=FXCollections.observableArrayList();
          ste=con.createStatement();
         ResultSet rs=ste.executeQuery("Select * from posts where contenuP like '%" + aa + "%' ;");
            while (rs.next()) {                
@@ -125,8 +127,8 @@ import java.util.logging.Logger;
         return fish;
     }
     
-    public List<Posts> trieln() throws SQLException{
-         List<Posts> fish=new ArrayList<>();
+    public ObservableList<Posts> trieln() throws SQLException{
+         ObservableList<Posts> fish=FXCollections.observableArrayList();
          ste=con.createStatement();
         ResultSet rs=ste.executeQuery("Select * from posts order by length(contenuP) desc;");
            while (rs.next()) {                
@@ -165,7 +167,7 @@ import java.util.logging.Logger;
        
         return true;
     }
-     
+   /*  
          public void sendmail(){
     try {
         Email email = new Email("skalah77@gmail.com","01010202s");
@@ -179,7 +181,7 @@ import java.util.logging.Logger;
              
              { e.printStackTrace();}		  
     System.out.println("Mail Sended"); 
-    }
+    }*/
    
          public List<Integer> countid() throws SQLException
          {

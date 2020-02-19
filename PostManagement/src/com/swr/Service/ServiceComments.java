@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package com.swr.Service;
-import com.email.durgesh.Email;
 import com.swr.Entite.Comments;
 import com.swr.Entite.Posts;
 import com.swr.IService.IService;
 import com.swr.Service.ServicePosts;
-import com.swr.Utilis.DataBase;
+import com.swr.Utils.DataBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -55,8 +56,8 @@ public class ServiceComments implements IService<Comments> {
     }
 
     @Override
-    public List<Comments> readAll() throws SQLException {
-List<Comments> arr=new ArrayList<>();
+    public ObservableList<Comments> readAll() throws SQLException {
+ObservableList arr= FXCollections.observableArrayList();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from comments");
      while (rs.next()) {                
@@ -73,8 +74,9 @@ List<Comments> arr=new ArrayList<>();
      }
     return arr;    }
     
-     public List<Comments> trie() throws SQLException{
-         List<Comments> fish=new ArrayList<>();
+     public  ObservableList<Comments> trie() throws SQLException{
+        ObservableList fish= FXCollections.observableArrayList();
+
          ste=con.createStatement();
         ResultSet rs=ste.executeQuery("Select * from comments order by idC desc;");
            while (rs.next()) {                
