@@ -3,9 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,8 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Front.HousingFrontController">
+<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.swr.GUI.Front.HousingFrontController">
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="1050.0" style="-fx-background-color: f1f1f1; -fx-background-radius: 15;">
          <children>
@@ -114,7 +115,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@fullpackstyling.css" text=" Goods" textFill="WHITE">
+                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#redToGoods" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@fullpackstyling.css" text=" Goods" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -150,25 +151,22 @@
             </Pane>
             <Pane layoutX="129.0" layoutY="103.0" prefHeight="582.0" prefWidth="920.0" stylesheets="@fullpackstyling.css">
                <children>
-                  <Button fx:id="Detailsbtn" layoutX="739.0" layoutY="63.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="More Details" textFill="WHITE">
+                  <Button fx:id="LocationBtn" layoutX="738.0" layoutY="68.0" mnemonicParsing="false" onAction="#checkloc" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="Check Location" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="LocationBtn" layoutX="739.0" layoutY="117.0" mnemonicParsing="false" onAction="#checkloc" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="Check Location" textFill="WHITE">
+                  <Button fx:id="itemsbtn" layoutX="739.0" layoutY="125.0" mnemonicParsing="false" onAction="#redToitems" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="Check Items" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="itemsbtn" layoutX="739.0" layoutY="169.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="130.0" styleClass="button4" stylesheets="@fullpackstyling.css" text="Check Items" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="720.0" layoutY="199.0" prefHeight="17.0" prefWidth="169.0" text="Rate housing" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <Slider blockIncrement="1.0" layoutX="728.0" layoutY="274.0" max="5.0" min="1.0" prefHeight="19.0" prefWidth="152.0" showTickLabels="true" value="1.0" />
-                  <Label alignment="CENTER" layoutX="720.0" layoutY="238.0" prefHeight="17.0" prefWidth="169.0" text="Rate this housing" textAlignment="CENTER" />
-                  <Button fx:id="subBtn" layoutX="778.0" layoutY="306.0" mnemonicParsing="false" text="Submit" />
-                  <TableView fx:id="tableh" layoutX="14.0" layoutY="35.0" prefHeight="521.0" prefWidth="691.0">
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Button fx:id="subBtn" layoutX="757.0" layoutY="323.0" mnemonicParsing="false" onAction="#submitR" prefHeight="27.0" prefWidth="92.0" styleClass="button6" stylesheets="@fullpackstyling.css" text="Submit" />
+                  <TableView fx:id="tableh" layoutX="14.0" layoutY="35.0" onMouseClicked="#redtodetails" prefHeight="521.0" prefWidth="691.0">
                     <columns>
                       <TableColumn fx:id="col_Name" prefWidth="143.99998474121094" text="Name" />
                       <TableColumn fx:id="col_Address" prefWidth="179.199951171875" text="Address" />
@@ -178,6 +176,8 @@
                         <TableColumn fx:id="col_R" prefWidth="91.2000732421875" text="Rating" />
                     </columns>
                   </TableView>
+                  <TextField fx:id="tffeed" layoutX="719.0" layoutY="271.0" promptText="Feedback..." />
+                  <Rating fx:id="ratingSlider" layoutX="720.0" layoutY="224.0" />
                </children>
             </Pane>
          </children>

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Back.ItemsManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.swr.GUI.Back.ItemsManagementController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -173,13 +174,12 @@
             <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
             <AnchorPane prefHeight="622.0" prefWidth="954.0" style="-fx-background-color: f1f1f1; -fx-background-radius: 0;" stylesheets="@../Front/fullpackstyling.css">
                <children>
-                  <TableView fx:id="Itemstable" layoutX="14.0" layoutY="64.0" prefHeight="274.0" prefWidth="787.0" stylesheets="@../Front/fullpackstyling.css">
+                  <TableView fx:id="Itemstable" layoutX="14.0" layoutY="64.0" onMouseClicked="#editcell" prefHeight="274.0" prefWidth="787.0" stylesheets="@../Front/fullpackstyling.css">
                      <columns>
-                        <TableColumn fx:id="col_idH" prefWidth="100.80001831054688" text="IdHousing" />
-                        <TableColumn fx:id="col_Name" prefWidth="112.0" text="Item Name" />
-                        <TableColumn fx:id="col_desc" prefWidth="252.80001831054688" text="Description" />
-                        <TableColumn fx:id="col_Quantity" minWidth="0.0" prefWidth="78.4000244140625" text="Quantity" />
-                        <TableColumn fx:id="col_Exp" prefWidth="107.99993896484375" text="Expiration date" />
+                        <TableColumn fx:id="col_Hname" prefWidth="132.800048828125" text="Housing" />
+                        <TableColumn fx:id="col_Name" prefWidth="111.99993896484375" text="Item Name" />
+                        <TableColumn fx:id="col_desc" prefWidth="202.4000244140625" text="Description" />
+                        <TableColumn fx:id="col_Quantity" minWidth="0.0" prefWidth="100.0" text="Quantity" />
                         <TableColumn fx:id="col_Status" prefWidth="126.39996337890625" text="Status" />
                      </columns>
                   </TableView>
@@ -190,48 +190,42 @@
                   </Label>
                   <Pane layoutX="14.0" layoutY="358.0" prefHeight="214.0" prefWidth="482.0">
                      <children>
-                        <TextField fx:id="tfidh" layoutX="14.0" layoutY="23.0" promptText="Idhousing" />
                         <TextField fx:id="tfName" layoutX="14.0" layoutY="66.0" promptText="Name" />
                         <TextField fx:id="tfQuantity" layoutX="14.0" layoutY="113.0" promptText="Quantity" />
-                        <TextField fx:id="tfExpdate" layoutX="187.0" layoutY="66.0" promptText="Expiration date" />
                         <TextField fx:id="tfStatus" layoutX="187.0" layoutY="113.0" promptText="Status" />
                         <TextArea fx:id="taDesc" layoutX="13.0" layoutY="148.0" prefHeight="59.0" prefWidth="323.0" promptText="Description" />
-                        <TextField fx:id="tfidItem" editable="false" layoutX="187.0" layoutY="23.0" prefHeight="25.0" prefWidth="67.0" promptText="ID" />
+                        <TextField fx:id="tfidItem" editable="false" layoutX="187.0" layoutY="23.0" prefHeight="25.0" prefWidth="67.0" promptText="ID" visible="false" />
+                        <ComboBox fx:id="comboH" layoutX="13.0" layoutY="22.0" prefWidth="150.0" promptText="Housing" style="-fx-background-color: white;" styleClass="combo-box" stylesheets="@style.css" />
                      </children>
                   </Pane>
-                  <Label fx:id="lblMsg" layoutX="457.0" layoutY="346.0" prefHeight="42.0" prefWidth="334.0" text="To Edit an ITem Please Press edit after you select it " textAlignment="JUSTIFY">
+                  <Label fx:id="lblMsg" layoutX="457.0" layoutY="346.0" prefHeight="42.0" prefWidth="334.0" textAlignment="JUSTIFY">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="editbtn" layoutX="557.0" layoutY="443.0" mnemonicParsing="false" onAction="#editcell" prefHeight="30.0" prefWidth="123.0" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Edit" textFill="#f5f4f4">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="newbtn" layoutX="558.0" layoutY="398.0" mnemonicParsing="false" onAction="#addnew" prefHeight="30.0" prefWidth="123.0" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="New" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="updatebtn" layoutX="557.0" layoutY="483.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: green;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Update" textFill="#f5f4f4">
+                  <Button fx:id="updatebtn" layoutX="558.0" layoutY="442.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: green;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Update" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deletebtn" layoutX="558.0" layoutY="527.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Delete" textFill="#f5f4f4">
+                  <Button fx:id="deletebtn" layoutX="558.0" layoutY="488.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Delete" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="tfSearch" layoutX="221.0" layoutY="21.0" prefHeight="26.0" prefWidth="569.0" promptText="Search for Items..." />
+                  <TextField fx:id="tfSearch" layoutX="221.0" layoutY="21.0" onKeyTyped="#recherche" prefHeight="26.0" prefWidth="569.0" promptText="Search for Items..." />
                   <Separator layoutX="117.0" layoutY="9.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="9.0" />
                   <Label fx:id="lbItems" layoutX="127.0" layoutY="15.0" prefHeight="38.0" prefWidth="67.0" text="Items" textFill="#feaf31">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="clearbtn" layoutX="558.0" layoutY="573.0" mnemonicParsing="false" onAction="#clear" prefHeight="18.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Clear" textFill="#f5f4f4">
+                  <Button fx:id="clearbtn" layoutX="558.0" layoutY="528.0" mnemonicParsing="false" onAction="#clear" prefHeight="18.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Clear" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Back.HousingManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.swr.GUI.Back.HousingManagementController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -171,9 +171,9 @@
       <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #f1f1f1;">
          <children>
             <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane prefHeight="622.0" prefWidth="954.0" style="-fx-background-color: f1f1f1; -fx-background-radius: 0;" stylesheets="@../Front/fullpackstyling.css">
+            <AnchorPane prefHeight="628.0" prefWidth="802.0" style="-fx-background-color: f1f1f1; -fx-background-radius: 0;" stylesheets="@../Front/fullpackstyling.css">
                <children>
-                  <TableView fx:id="Htable" layoutX="14.0" layoutY="64.0" prefHeight="274.0" prefWidth="787.0" stylesheets="@../Front/fullpackstyling.css">
+                  <TableView fx:id="Htable" layoutX="14.0" layoutY="64.0" onMouseClicked="#dblclick" prefHeight="274.0" prefWidth="787.0" stylesheets="@../Front/fullpackstyling.css">
                      <columns>
                         <TableColumn fx:id="col_Name" prefWidth="97.60000610351562" text="Name" />
                         <TableColumn fx:id="col_Desc" prefWidth="157.60000610351562" text="Description" />
@@ -189,39 +189,38 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="14.0" layoutY="358.0" prefHeight="200.0" prefWidth="482.0">
-                     <children>
-                        <TextField fx:id="tfName" layoutX="14.0" layoutY="23.0" promptText="Name" />
-                        <TextField fx:id="tfType" layoutX="14.0" layoutY="66.0" promptText="Type" />
-                        <TextField fx:id="tfNbRes" layoutX="187.0" layoutY="23.0" promptText="Nb Residents" />
-                        <TextField fx:id="tfAddress" layoutX="14.0" layoutY="113.0" promptText="Address" />
-                        <TextField fx:id="tfLocation" layoutX="187.0" layoutY="66.0" promptText="Location (Long,Lat)" />
-                        <TextField fx:id="tfCapacity" layoutX="187.0" layoutY="113.0" promptText="Capacity" />
-                        <TextArea fx:id="taDesc" layoutX="13.0" layoutY="148.0" prefHeight="50.0" prefWidth="323.0" promptText="Description" />
-                        <TextField fx:id="tfIdh" editable="false" layoutX="354.0" layoutY="23.0" prefHeight="25.0" prefWidth="67.0" promptText="ID" />
-                     </children>
-                  </Pane>
+                  <TextField fx:id="tfName" layoutX="24.0" layoutY="349.0" promptText="Name">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <TextField fx:id="tfType" layoutX="24.0" layoutY="385.0" promptText="Type" />
+                  <TextField fx:id="tfNbRes" layoutX="24.0" layoutY="459.0" promptText="Nb Residents" />
+                  <TextField fx:id="tfAddress" layoutX="24.0" layoutY="421.0" promptText="Address" />
+                  <Button fx:id="locbtn" layoutX="200.0" layoutY="417.0" mnemonicParsing="false" onAction="#openMap" prefHeight="18.0" prefWidth="158.0" text="Get Location">
+                     <graphic>
+                        <TextField fx:id="tfLocation" editable="false" prefHeight="25.0" prefWidth="58.0" promptText="Location (Long,Lat)" />
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="tfCapacity" layoutX="24.0" layoutY="498.0" promptText="Capacity" />
+                  <TextArea fx:id="taDesc" layoutX="24.0" layoutY="537.0" prefHeight="50.0" prefWidth="323.0" promptText="Description" />
+                  <TextField fx:id="tfIdh" editable="false" layoutX="279.0" layoutY="357.0" prefHeight="25.0" prefWidth="67.0" promptText="ID" visible="false" />
                   <Label fx:id="lblMsg" layoutX="505.0" layoutY="349.0" prefHeight="42.0" prefWidth="256.0" text="To Edit a Housing Please Select one" textAlignment="JUSTIFY">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="editbtn" layoutX="557.0" layoutY="443.0" mnemonicParsing="false" onAction="#editcell" prefHeight="30.0" prefWidth="123.0" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Edit" textFill="#f5f4f4">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="newbtn" layoutX="558.0" layoutY="398.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="123.0" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="New" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="updatebtn" layoutX="557.0" layoutY="483.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: green;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Update" textFill="#f5f4f4">
+                  <Button fx:id="updatebtn" layoutX="558.0" layoutY="442.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: green;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Update" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="deletebtn" layoutX="558.0" layoutY="527.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Delete" textFill="#f5f4f4">
+                  <Button fx:id="deletebtn" layoutX="558.0" layoutY="481.0" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Delete" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -233,7 +232,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="clearbtn" layoutX="557.0" layoutY="572.0" mnemonicParsing="false" onAction="#clear" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: Red;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Clear" textFill="#f5f4f4">
+                  <Button fx:id="clearbtn" layoutX="558.0" layoutY="520.0" mnemonicParsing="false" onAction="#clear" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: grey;" styleClass="button4" stylesheets="@../Front/fullpackstyling.css" text="Clear" textFill="#f5f4f4">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Front.FrontHomeController">
+<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.swr.GUI.Front.FrontHomeController">
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="1050.0" style="-fx-background-color: f1f1f1; -fx-background-radius: 15;">
          <children>
