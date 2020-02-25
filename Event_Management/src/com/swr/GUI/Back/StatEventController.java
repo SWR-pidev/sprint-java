@@ -6,6 +6,7 @@
 package com.swr.GUI.Back;
 
 import com.swr.Utils.DataBase;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,8 +19,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -160,7 +163,13 @@ private Connection con;
     }
 
     @FXML
-    private void DisplayEventSpace(ActionEvent event) {
+    private void DisplayEventSpace(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("EventSpace.fxml"));
+        Parent root = loader.load();
+          
+          btnEvent.getScene().setRoot(root);
     }
     
 }

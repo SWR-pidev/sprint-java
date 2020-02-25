@@ -12,19 +12,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/Service/ServiceSponsor.java</file>
             <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Front/DisplayEventSingleController.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Back/EventSpace.fxml</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Back/StatEvent.fxml</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/Service/ServiceParticipation.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/Service/ServiceEvent.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Front/FronttHomeController.java</file>
             <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Front/PopupSponsorController.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Back/EventSpaceController.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Back/StatEventController.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Front/FronttMain.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Back/AddEventController.java</file>
-            <file>file:/C:/wamp64/www/pidev_swr/sprint%20java/Event%20Management/Event_Management/src/com/swr/GUI/Front/DisplayEventsController.java</file>
         </group>
     </open-files>
 </project-private>

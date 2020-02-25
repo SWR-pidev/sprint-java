@@ -24,7 +24,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -93,6 +96,15 @@ public class EditEventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        dateTxt.setDayCellFactory((DatePicker picker) -> {
+           return new DateCell() {
+               public void updateItem(LocalDate date, boolean empty) {
+                   super.updateItem(date, empty);
+                   LocalDate today = LocalDate.now();
+                   LocalDate weeklater =today.plusWeeks(1);
+                   setDisable( empty || date.compareTo(today) < 0 || date.equals(today) || date.isBefore(weeklater));
+               }
+           }; });
     }    
 
     @FXML
@@ -125,19 +137,95 @@ public class EditEventController implements Initializable {
     private void EditEvent(ActionEvent event) throws SQLException, IOException {
         ZoneId defaultZoneId = ZoneId.systemDefault();
         String nom = nameTxt.getText();
+       
         LocalDate date = dateTxt.getValue();
         //Date datee = (Date) Date.from(date.atStartOfDay(defaultZoneId).toInstant());
-        java.sql.Date sqlDate = java.sql.Date.valueOf(date);
+       
         LocalTime time=timeTxt.getValue();
-        Time timee =  Time.valueOf( time );
+        
         String location = locationtxt.getText();
-        double  budget = Double.parseDouble(budgetTxt.getText());
+       
         String orga = orgaTxt.getText();
         String detail=detailTxt.getText();
-        if(Imgurl==null)
+        
+         if(nom.isEmpty() || !nom.matches("^[ A-Za-z]+$") )
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the name with only letters!!");
+                alert.showAndWait();
+        }
+          else if(dateTxt.getValue()==null)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the date !!");
+                alert.showAndWait();
+
+        }
+          else if(timeTxt.getValue()==null)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the time !!");
+                alert.showAndWait();
+
+        } 
+          else if(detail.isEmpty())
+        {
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the Description!!");
+                alert.showAndWait();
+        }
+           else if( budgetTxt.getText().trim().equals("") || budgetTxt.getText().matches("^[ A-Za-z]+$"))
+        {
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the budget with only numbers !!");
+                alert.showAndWait();
+        }
+           else if( !orga.matches("^[ A-Za-z]+$") || orga.trim().equals(""))
+        {
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the organizator name with only letters !!");
+                alert.showAndWait();
+        }
+           else if (urlTxt.getText().isEmpty())
+           {
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert an image!!");
+                alert.showAndWait();
+           }
+     
+           else if(location.isEmpty())
+        {
+             Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning !!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Make sure to insert the Description!!");
+                alert.showAndWait();
+        }
+           else {
+              
+               
+               if(Imgurl==null)
         {
             Imgurl=urlTxt.getText();
         }
+               
+                double  budget = Double.parseDouble(budgetTxt.getText());
+               Time timee =  Time.valueOf( time );
+                java.sql.Date sqlDate = java.sql.Date.valueOf(date);
         ServiceEvent ser = new ServiceEvent();
         Event e = new Event(Id_evt,nom,sqlDate,timee,location,detail,budget,orga,this.Imgurl);
         
@@ -148,7 +236,7 @@ public class EditEventController implements Initializable {
                          .getResource("EventSpace.fxml"));
         Parent root = loader.load();
           
-          btnEvent.getScene().setRoot(root);
+          btnEvent.getScene().setRoot(root);}
     }
 
     public void setNameTxt(String nameTxt) {
