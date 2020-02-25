@@ -46,5 +46,17 @@ public class FrontHomeController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
     }
+
+    @FXML
+    private void redToGoods(ActionEvent event) throws IOException {
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Goods.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent,1050, 700);
+        
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(tableViewScene);
+        window.show();
+    }
     
 }
