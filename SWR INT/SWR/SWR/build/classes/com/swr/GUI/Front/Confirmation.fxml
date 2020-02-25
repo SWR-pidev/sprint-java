@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Front.ConfirmationController">
+   <children>
+      <BorderPane prefHeight="576.0" prefWidth="473.0" styleClass="linear-grad" stylesheets="@css/fullpackstyling.css">
+         <center>
+            <ImageView fitHeight="263.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@images/swr.png" />
+               </image>
+            </ImageView>
+         </center>
+      </BorderPane>
+      <Pane layoutX="350.0" prefHeight="700.0" prefWidth="701.0">
+         <children>
+            <TextField fx:id="code" focusTraversable="false" layoutX="262.0" layoutY="259.0" prefHeight="50.0" prefWidth="272.0" promptText="Enter the code">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Button fx:id="btnConf" layoutX="488.0" layoutY="405.0" mnemonicParsing="false" onAction="#confirmation" prefHeight="35.0" prefWidth="130.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Enter" textFill="#fffdf0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="139.0" layoutY="26.0" opacity="0.5" prefHeight="153.0" prefWidth="404.0" text="Enter your verification code">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="iterlab" alignment="CENTER" layoutX="380.0" layoutY="319.0" prefHeight="50.0" prefWidth="36.0" text="3" textFill="#eb0808">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="labmail" alignment="CENTER" layoutX="280.0" layoutY="186.0" prefHeight="35.0" prefWidth="272.0" textFill="#f2b936">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="iterlab1" alignment="CENTER" layoutX="262.0" layoutY="326.0" prefHeight="35.0" prefWidth="108.0" text="you have">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="iterlab11" alignment="CENTER" layoutX="426.0" layoutY="326.0" prefHeight="35.0" prefWidth="108.0" text="attempts">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

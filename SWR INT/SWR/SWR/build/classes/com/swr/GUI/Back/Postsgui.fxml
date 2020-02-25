@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Back.postsController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@./images/swr.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="50.0" />
+               </VBox.margin></ImageView>
+            <Label text="Solidarity With Refugees" textFill="#b9b6b6">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Home" textFill="#1b1b1b">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Compaign">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/cmp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+			    <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+			 <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Donations">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/donate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+			<Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Events">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/event.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+		
+            <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="News">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/news.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Posts">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/posts.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="FAQ">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/faq.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Housing">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/housing.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Delivery">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/delivery.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+			 <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Delivery Men">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/delivery_men.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #f1f1f1;">
+         <children>
+            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" stylesheets="@style.css">
+               <children>
+                  <TextField fx:id="searchbar" layoutX="400.0" layoutY="82.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #f1f1f1; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <Label layoutX="24.0" layoutY="43.0" text="Post Management" textFill="#0571ba">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="PostsTable" layoutX="16.0" layoutY="202.0" prefHeight="278.0" prefWidth="761.0">
+                    <columns>
+                      <TableColumn fx:id="col_Contenu" prefWidth="395.1999816894531" text="Contenu" />
+                        <TableColumn fx:id="col_cmt" prefWidth="84.79998779296875" text="Comments nb" />
+                        <TableColumn fx:id="col_views" prefWidth="68.0" text="Views" />
+                        <TableColumn fx:id="col_report" prefWidth="62.4000244140625" text="Reports" />
+                        <TableColumn fx:id="col_like" prefWidth="67.99993896484375" text="Likes " />
+                        <TableColumn fx:id="col_user" prefWidth="83.99993896484375" text="Iduser" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="deletebtn" layoutX="724.0" layoutY="486.0" mnemonicParsing="false" onAction="#deletePost" styleClass="button4" text="Delete">
+                     <stylesheets>
+                        <URL value="@style.css" />
+                        <URL value="@../Front/fullpackstyling.css" />
+                     </stylesheets>
+                  </Button>
+                  <Pane layoutX="591.0" layoutY="61.0" prefHeight="99.0" prefWidth="199.0">
+                     <children>
+                        <Button fx:id="cmtbtn" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#gotoComnts" styleClass="buttoncircle" stylesheets="@../Front/fullpackstyling.css" text="Comments Management" />
+                        <Button fx:id="statsbtn" layoutX="14.0" layoutY="58.0" mnemonicParsing="false" onAction="#gotoStats" prefHeight="31.0" prefWidth="183.0" styleClass="buttoncircle" stylesheets="@../Front/fullpackstyling.css" text="          Stats             " />
+                     </children>
+                  </Pane>
+                  <ComboBox fx:id="Sortboxp" layoutX="16.0" layoutY="145.0" onAction="#Trier" prefWidth="150.0" />
+                  <Button fx:id="searchbtn" layoutX="356.0" layoutY="81.0" mnemonicParsing="false" onAction="#search" prefHeight="35.0" prefWidth="36.0" styleClass="buttoncircle" stylesheets="@../Front/fullpackstyling.css" />
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="366.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./images/icons8_Search_52px.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="chkbtn" layoutX="497.0" layoutY="486.0" mnemonicParsing="false" onAction="#assoCmnt" styleClass="button4" text="Check associated Comments">
+                     <stylesheets>
+                        <URL value="@style.css" />
+                        <URL value="@../Front/fullpackstyling.css" />
+                     </stylesheets>
+                  </Button>
+                                    <ImageView fitHeight="60.0" fitWidth="45.0" layoutX="724.0" layoutY="14.0" onMousePressed="#logout" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logoutb.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+   <effect>
+      <DropShadow color="#1b1eeb" />
+   </effect>
+</AnchorPane>
