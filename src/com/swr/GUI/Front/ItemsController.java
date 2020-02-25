@@ -6,23 +6,33 @@
 package com.swr.GUI.Front;
 
 import com.swr.Entite.Item;
+import com.swr.Service.HousingService;
 import com.swr.Service.ServiceItem;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,8 +42,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ItemsController implements Initializable {
 ObservableList<Item> oblist = FXCollections.observableArrayList();
     ServiceItem is= ServiceItem.getInstance();
-     
-
+    HousingService hs= HousingService.getInstance();
+   
     
     @FXML
     public TableColumn<?, ?> col_name;
@@ -49,6 +59,8 @@ ObservableList<Item> oblist = FXCollections.observableArrayList();
     public TableColumn<?, ?> col_desc;
     @FXML
     private TextField tfSearch;
+    @FXML
+    private Button ctnbtn;
     /**
      * Initializes the controller class.
      */
@@ -91,6 +103,40 @@ ObservableList<Item> oblist = FXCollections.observableArrayList();
         
         // 5. Add sorted (and filtered) data to the table.
         itemTab.setItems(sortedData);
+    }
+
+    @FXML
+    private void redtogoodscreat(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GoodCreation.fxml"));
+        Parent tableViewParent = loader.load();
+        Scene tableViewScene = new Scene(tableViewParent,500, 500);
+        GoodCreationController Gc = loader.getController();
+        Gc.comboH.setItems((ObservableList<String>) hs.getHousingNames());
+        
+        
+        
+        
+//         = is.getItemsOfHousing(itemTab.getSelectionModel().getSelectedItem().getIdh());
+//            Ic.col_name.setCellValueFactory(new PropertyValueFactory<>("nameItem"));
+//            Ic.col_quan.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+//            Ic.col_stat.setCellValueFactory(new PropertyValueFactory<>("statusItem"));
+//            Ic.col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));
+//            Ic.txtlbl.setText(Ic.txtlbl.getText()+itemTab.getSelectionModel().getSelectedItem().getNameItem());
+//            
+//            
+//            Ic.itemTab.setItems(oblistitem);
+      
+        
+        
+ 
+        
+        //This line gets the Stage information
+         
+
+        Stage newWindow = new Stage();
+                newWindow.setTitle("Good Creation");
+                newWindow.setScene(tableViewScene);
+                newWindow.showAndWait();
     }
    
 }

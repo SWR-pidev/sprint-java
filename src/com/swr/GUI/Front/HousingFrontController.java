@@ -219,6 +219,8 @@ public class HousingFrontController implements Initializable {
         hdc.setTname(N);
         hdc.setTdesc(D);
         hdc.setTtype(T);
+        hdc.setTcapacity(String.valueOf(tableh.getSelectionModel().getSelectedItem().getCapacity()));
+        hdc.setTRes(String.valueOf(tableh.getSelectionModel().getSelectedItem().getNbresidents()));
         
  
         
@@ -268,6 +270,18 @@ public class HousingFrontController implements Initializable {
                 newWindow.setTitle("Items");
                 newWindow.setScene(tableViewScene);
                 newWindow.showAndWait();
+    }
+
+    @FXML
+    private void redToGoods(ActionEvent event) throws IOException {
+         Parent tableViewParent = FXMLLoader.load(getClass().getResource("Goods.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent,1050, 700);
+        
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(tableViewScene);
+        window.show();
     }
    
     

@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,17 +40,14 @@ Servicegoods i = new Servicegoods();
     private TableColumn<goods, String> quantc;
     @FXML
     private TableColumn<goods, String> statc;
-    @FXML
-    private Button adddd;
     ObservableList<goods> oblistt=  FXCollections.observableArrayList();
     @FXML
     private TableView<goods> tablegoods;
-    @FXML
     private TextField btnitemm;
-    @FXML
     private TextField btnstatus;
-    @FXML
     private TextField btnquant;
+    @FXML
+    private ComboBox<?> comboH;
 
     /**
      * Initializes the controller class.
@@ -63,7 +61,6 @@ Servicegoods i = new Servicegoods();
     }
     }    
 
-    @FXML
     private void Ajouteer(ActionEvent event) throws SQLException {
        goods g1= new goods(1,1,btnitemm.getText(),Integer.parseInt(btnquant.getText()), btnstatus.getText());
        

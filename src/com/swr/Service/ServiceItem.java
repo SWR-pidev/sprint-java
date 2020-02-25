@@ -112,10 +112,8 @@ public class ServiceItem implements IServiceItem{
         pste=con.prepareStatement("Select * from items where idItem=? ");
         pste.setInt(1, id);
         ResultSet rs= pste.executeQuery();
-         if (rs.isBeforeFirst()) {
-            System.out.println("*********** Item doesn't Exist !**********");
-            return null;}
-        else {
+     
+        while(rs.first()) {
                int idItem=rs.getInt(1);
                int idhouse= rs.getInt("idh");
                String nameItem=rs.getString("name");
@@ -127,39 +125,31 @@ public class ServiceItem implements IServiceItem{
         Item i= new Item(idItem,idhouse,nameItem,description, Quantity ,expDate,statusItem);
         return i;
             }
+        return null;
     }
 
     @Override
-    public Item getItemByName(String n) throws SQLException {
-    pste=con.prepareStatement("Select * from items where name=? ");
+    public int getItemByName(String n) throws SQLException {
+    pste=con.prepareStatement("Select Quantity from items where name=? ");
         pste.setString(1,n );
         ResultSet rs= pste.executeQuery();
-         if (rs.isBeforeFirst()) {
-            System.out.println("*********** Item doesn't Exist !**********");
-            return null;}
-        else {
-               int idItem=rs.getInt(1);
-               int idhouse= rs.getInt("idh");
-               String nameItem=rs.getString("name");
-               String description=rs.getString("description");
-               int Quantity=rs.getInt("Quantity");
-               String expDate=rs.getString("capacity");
-               String statusItem=rs.getString("nbresidents");
+        while(rs.first()) {
                
-        Item i= new Item(idItem,idhouse,nameItem,description, Quantity ,expDate,statusItem);
-        return i;
+               int Quantity=rs.getInt("Quantity");
+               
+               
+        
+        return Quantity;
             }
-    
+        return 0;
     }
+   
 
     @Override
     public void EmptyItem() throws SQLException {
      pste=con.prepareStatement("Select * from items where quantity=0 ");
      ResultSet rs= pste.executeQuery();
-     if(rs.isBeforeFirst()) 
-            System.out.println("No Items Are empty");
-     else
-     { while(rs.next()) {
+      while(rs.next()) {
                int idItem=rs.getInt(1);
                int idhouse= rs.getInt("idh");
                String nameItem=rs.getString("name");
@@ -169,9 +159,37 @@ public class ServiceItem implements IServiceItem{
                String statusItem=rs.getString("status");
             Item i= new Item(idItem,idhouse,nameItem,description, Quantity ,expDate,"Collected");
            
-            updateItem(i);}
+            updateItem(i);
      }
         
     }
+    
+    public void Changeandtest(String name,int q) throws SQLException {
+     pste=con.prepareStatement("Select * from items where name='"+name+"';");
+     ResultSet rs= pste.executeQuery();
+     if(rs.first()){
+               int idItem=rs.getInt(1);
+               
+               int idhouse= rs.getInt("idh");
+               String nameItem=rs.getString("name");
+               String description=rs.getString("description");
+               int Quantity=rs.getInt("quantity");
+               String expDate=rs.getString("expdate");
+               String statusItem=rs.getString("status");
+               if (Quantity<=q){
+               Quantity=0;
+               statusItem="Collected";
+                   System.out.println("im here Collecting");
+               }
+               else {Quantity=Quantity-q;
+               }
+               
+                Item i= new Item(idItem,idhouse,nameItem,description, Quantity ,expDate,statusItem);
+                updateItem(i);
+     }
+     
+    }
+    //Update Item 
+    
     
 }

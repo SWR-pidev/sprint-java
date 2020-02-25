@@ -20,6 +20,6 @@ public interface IServiceItem {
     List<Item> getAllItems() throws SQLException;
     List<Item> getItemsOfHousing(int id) throws SQLException;
     Item getItemById(int id) throws SQLException;
-    Item getItemByName(String n) throws SQLException;
+    int getItemByName(String n) throws SQLException;
     void EmptyItem() throws SQLException;
 }

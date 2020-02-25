@@ -28,7 +28,7 @@ public class Servicegoods  {
         con = DataBase.getInstance().getConnection();
 
     }
-public void ajouter1(goods g ) throws SQLException
+public void ajouter1(goods g) throws SQLException
     {
     PreparedStatement pre=con.prepareStatement("INSERT INTO `swr`.`goods` (`idG`,`idH`,`idUser`,`item`,`Qcollected`,`status`) VALUES (NULL,?,?,?,?,?);");
     pre.setInt(1, g.getIdH());
@@ -44,7 +44,7 @@ public void ajouter1(goods g ) throws SQLException
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from goods");
      while (rs.next()) {                
-               int idG=rs.getInt(1);
+               
                int idH=rs.getInt("idH");
                int idUser=rs.getInt("idUser");
                 String item=rs.getString("item");
@@ -57,21 +57,10 @@ public void ajouter1(goods g ) throws SQLException
      }
     return arr;
     }
-
     
-    public void ajouter(Object t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+     
     
-    public boolean delete(Object t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    public boolean update(Object t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     
 }

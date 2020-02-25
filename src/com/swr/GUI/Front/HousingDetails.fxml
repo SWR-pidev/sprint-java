@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Front.HousingDetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Front.HousingDetailsController">
    <children>
-      <ToolBar layoutY="-2.0" prefHeight="50.0" prefWidth="777.0" />
-      <Pane layoutY="48.0" prefHeight="486.0" prefWidth="777.0">
+      <Pane layoutY="48.0" prefHeight="486.0" prefWidth="570.0">
          <children>
-            <Label alignment="CENTER" layoutX="25.0" layoutY="36.0" prefHeight="21.0" prefWidth="44.0" text="Name :" />
-            <Text fx:id="Tdesc" layoutX="116.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a" wrappingWidth="427.7366943359375" />
-            <Label alignment="CENTER" layoutX="31.0" layoutY="190.0" prefHeight="21.0" prefWidth="60.0" text="Address :" />
+            <Label alignment="CENTER" layoutX="28.0" layoutY="36.0" prefHeight="21.0" prefWidth="38.0" text="Name :" />
+            <Text fx:id="Tdesc" layoutX="116.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a" wrappingWidth="360.5366516113281" />
+            <Label alignment="CENTER" layoutX="20.0" layoutY="190.0" prefHeight="21.0" prefWidth="60.0" text="Address :" />
             <Label alignment="CENTER" layoutX="25.0" layoutY="89.0" prefHeight="21.0" prefWidth="72.0" text="Description :" />
-            <Text fx:id="Tname" layoutX="116.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
-            <ImageView fitHeight="108.0" fitWidth="107.0" layoutX="641.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+            <Text fx:id="Tname" layoutX="116.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="172.53671264648438" />
+            <ImageView fitHeight="108.0" fitWidth="107.0" layoutX="437.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/housing-01.png" />
                </image>
             </ImageView>
             <Text fx:id="Taddress" layoutX="116.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
-            <Label alignment="CENTER" layoutX="31.0" layoutY="233.0" prefHeight="21.0" prefWidth="38.0" text="Type :" />
+            <Label alignment="CENTER" layoutX="25.0" layoutY="233.0" prefHeight="21.0" prefWidth="32.0" text="Type :" />
             <Text fx:id="Ttype" layoutX="116.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
-            <Label alignment="CENTER" layoutX="31.0" layoutY="270.0" prefHeight="21.0" prefWidth="60.0" text="Capacity :" />
-            <Text fx:id="Tcapacity" layoutX="124.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
-            <Label alignment="CENTER" layoutX="31.0" layoutY="316.0" prefHeight="21.0" prefWidth="60.0" text="Residents :" />
-            <Text fx:id="TRes" layoutX="124.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
+            <Label alignment="CENTER" layoutX="23.0" layoutY="270.0" prefHeight="21.0" prefWidth="54.0" text="Capacity :" />
+            <Text fx:id="Tcapacity" layoutX="116.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
+            <Label alignment="CENTER" layoutX="20.0" layoutY="316.0" prefHeight="21.0" prefWidth="60.0" text="Residents :" />
+            <Text fx:id="TRes" layoutX="116.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test" wrappingWidth="427.7366943359375" />
+         </children>
+      </Pane>
+      <Pane prefHeight="51.0" prefWidth="570.0" style="-fx-background-color: #0078d7;">
+         <children>
+            <Label layoutX="14.0" layoutY="17.0" text="Details Of Housing">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
