@@ -89,8 +89,8 @@ public class ServiceItem implements IServiceItem{
     }
 
     @Override
-    public List<Item> getItemsOfHousing(int id) throws SQLException {
-            List<Item> arr=new ArrayList<>();
+    public ObservableList<Item> getItemsOfHousing(int id) throws SQLException {
+            ObservableList<Item> arr=FXCollections.observableArrayList();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from items where idh="+id+";");
      while (rs.next()) {       
@@ -153,7 +153,7 @@ public class ServiceItem implements IServiceItem{
     }
 
     @Override
-    public void deleteEmptyItem() throws SQLException {
+    public void EmptyItem() throws SQLException {
      pste=con.prepareStatement("Select * from items where quantity=0 ");
      ResultSet rs= pste.executeQuery();
      if(rs.isBeforeFirst()) 
@@ -164,12 +164,12 @@ public class ServiceItem implements IServiceItem{
                int idhouse= rs.getInt("idh");
                String nameItem=rs.getString("name");
                String description=rs.getString("description");
-               int Quantity=rs.getInt("Quantity");
-               String expDate=rs.getString("capacity");
-               String statusItem=rs.getString("nbresidents");
-            Item i= new Item(idItem,idhouse,nameItem,description, Quantity ,expDate,statusItem);
+               int Quantity=rs.getInt("quantity");
+               String expDate=rs.getString("expdate");
+               String statusItem=rs.getString("status");
+            Item i= new Item(idItem,idhouse,nameItem,description, Quantity ,expDate,"Collected");
            
-            deleteItem(i);}
+            updateItem(i);}
      }
         
     }

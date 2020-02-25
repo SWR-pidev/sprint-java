@@ -5,6 +5,7 @@
  */
 package com.swr.GUI.Front;
 
+import com.swr.Entite.Housing;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,8 +23,33 @@ import javafx.scene.text.Text;
  */
 public class HousingDetailsController implements Initializable {
     
-    @FXML
-    private Button Retbtn;
+    
+   
+    
+
+    public void setTdesc(String Tdesc) {
+        this.Tdesc.setText(Tdesc);
+    }
+
+    public void setTname(String Tname) {
+        this.Tname.setText(Tname) ;
+    }
+
+    public void setTaddress(String Taddress) {
+        this.Taddress.setText(Taddress);
+    }
+
+    public void setTtype(String Ttype) {
+        this.Ttype.setText(Ttype);
+    }
+
+    public void setTcapacity(String Tcapacity) {
+        this.Tcapacity.setText(Tcapacity);
+    }
+
+    public void setTRes(String TRes) {
+        this.TRes.setText(TRes);
+    }
     @FXML
     private Text Tdesc;
     @FXML
@@ -36,6 +62,9 @@ public class HousingDetailsController implements Initializable {
     private Text Tcapacity;
     @FXML
     private Text TRes;
+   
+
+  
 
     /**
      * Initializes the controller class.
@@ -45,11 +74,7 @@ public class HousingDetailsController implements Initializable {
         
     }    
 
-    @FXML
-    private void redtoH(ActionEvent event) {
-        
-        
-    }
+    
 
     
 }

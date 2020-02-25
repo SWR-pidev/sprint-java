@@ -21,5 +21,5 @@ public interface IServiceItem {
     List<Item> getItemsOfHousing(int id) throws SQLException;
     Item getItemById(int id) throws SQLException;
     Item getItemByName(String n) throws SQLException;
-    void deleteEmptyItem() throws SQLException;
+    void EmptyItem() throws SQLException;
 }

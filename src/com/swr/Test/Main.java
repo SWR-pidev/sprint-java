@@ -27,8 +27,8 @@ public class Main {
 //            RatingService rs= new RatingService();
             HousingService hs= HousingService.getInstance();
         try {
-            System.out.println(hs.getHousingWR(9));
-            System.out.println(hs.getHousingByName("test housing"));
+            System.out.println(hs.getHousingWR(2));
+            System.out.println(hs.getHousingByName("Nahr el-Bared"));
             System.out.println(hs.getAllHousingsByR());
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

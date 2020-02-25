@@ -22,5 +22,6 @@ public interface IHousingService {
     Housing getHousingById(int id) throws SQLException;
     Housing getHousingByName(String nom) throws SQLException;
     Housing getHousingByLocation(String loc) throws SQLException;
+    ObservableList<String> getHousingNames() throws SQLException;
     
 }

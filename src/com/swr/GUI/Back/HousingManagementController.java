@@ -7,6 +7,17 @@ package com.swr.GUI.Back;
 
 import com.swr.Entite.Housing;
 import com.swr.Service.HousingService;
+import com.teamdev.jxmaps.ControlPosition;
+import com.teamdev.jxmaps.InfoWindow;
+import com.teamdev.jxmaps.LatLng;
+import com.teamdev.jxmaps.Map;
+import com.teamdev.jxmaps.MapMouseEvent;
+import com.teamdev.jxmaps.MapOptions;
+import com.teamdev.jxmaps.MapReadyHandler;
+import com.teamdev.jxmaps.MapStatus;
+import com.teamdev.jxmaps.MapTypeControlOptions;
+import com.teamdev.jxmaps.Marker;
+import com.teamdev.jxmaps.javafx.MapView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,6 +47,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -102,9 +114,11 @@ public class HousingManagementController implements Initializable {
     private TableColumn<?, ?> col_NbRes;
     @FXML
     private TableColumn<?, ?> col_Location;
+   
+    // Local variables 
     ObservableList<Housing> oblist = FXCollections.observableArrayList();
-    @FXML
-    private Button editbtn;
+    LatLng location = new LatLng();
+    
     @FXML
     private TextField tfIdh;
     @FXML
@@ -113,6 +127,8 @@ public class HousingManagementController implements Initializable {
     private Label lbItems;
     @FXML
     private Button clearbtn;
+    @FXML
+    private Button locbtn;
 
     public HousingManagementController() {
         this.hs = HousingService.getInstance();
@@ -137,8 +153,7 @@ public class HousingManagementController implements Initializable {
              
                validate("Address", tfAddress.getText(), "[a-zA-Z]+") &&
                 validate("Capacity", tfCapacity.getText(), "[0-9]+") && 
-                validate("Residents", tfNbRes.getText(), "[0-9]+") && 
-                 validate("Location", tfLocation.getText(), "([0-9][0-9][.])([0-9]+[,])([0-9][0-9][.])([0-9]+)") &&
+                validate("Residents", tfNbRes.getText(), "[0-9]+")  &&
                   validate("Type", tfType.getText(), "[a-zA-Z]+") )  {
         
         int t1= Integer.parseInt(tfCapacity.getText());
@@ -210,11 +225,7 @@ public class HousingManagementController implements Initializable {
         
     }
 
-    @FXML
-    private void editcell(ActionEvent event) {
-        SelectedCell();
-    }
-
+   
     @FXML
     private void redToItems(MouseEvent event) throws IOException {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("ItemsManagement.fxml"));
@@ -313,4 +324,88 @@ public class HousingManagementController implements Initializable {
         }
         alert.showAndWait();
 	} 
+
+    @FXML
+    private void dblclick(MouseEvent event) {
+        if (event.getClickCount()==2){
+        SelectedCell();
+        }
+    }
+
+    @FXML
+    private void openMap(ActionEvent event) {
+        final MapView mapView = new MapView();
+        mapView.setOnMapReadyHandler(new MapReadyHandler() {
+            @Override
+            public void onMapReady(MapStatus status) {
+                // Check if the map is loaded correctly
+                if (status == MapStatus.MAP_STATUS_OK) {
+                    // Getting the associated map object
+                    final Map map = mapView.getMap();
+                    // Creating a map options object
+                    MapOptions options = new MapOptions();
+                    // Creating a map type control options object
+                    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
+                    // Changing position of the map type control
+                    controlOptions.setPosition(ControlPosition.TOP_RIGHT);
+                    // Setting map type control options
+                    options.setMapTypeControlOptions(controlOptions);
+                    // Setting map options
+                    map.setOptions(options);
+                    // Setting the map center
+                    map.setCenter(new LatLng(36.8574464,10.2498304));
+                    // Setting initial zoom value
+                    map.setZoom(9.0);
+//                    // Creating a new marker object
+//                    Marker marker = new Marker(map);
+//                    // Setting marker position
+//                    marker.setPosition(map.getCenter());
+                    // Creating info window, that will be initially displayed on the marker
+                    final InfoWindow infoWindow = new InfoWindow(map);
+                    // Setting info window text
+                    infoWindow.setContent("Choose a place on map ");
+                    // Showing info windows under the marker
+                    infoWindow.open(map);
+                    // Adding event listener that intercepts clicking on map
+                    map.addEventListener("click", new MapMouseEvent() {
+                       
+
+                        @Override
+                        public void onEvent(com.teamdev.jxmaps.MouseEvent me) {
+                              // Closing initially created info window
+                            infoWindow.close();
+                            // Creating a new marker
+                            final Marker marker = new Marker(map);
+                            // Move marker to the position where user clicked
+                            marker.setPosition(me.latLng());
+                            location= me.latLng();
+                            tfLocation.setText(location.toString());
+
+                            // Adding event listener that intercepts clicking on marker
+                            marker.addEventListener("click", new MapMouseEvent() {
+                                
+
+                                @Override
+                                public void onEvent(com.teamdev.jxmaps.MouseEvent me) {
+                                    marker.remove();  
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+         Scene scene = new Scene(new BorderPane(mapView), 700, 500);
+
+        Stage newWindow = new Stage();
+                newWindow.setTitle("MAP");
+                newWindow.setScene(scene);
+ 
+                // Set position of second window, related to primary window.
+                
+ 
+                newWindow.show();
+    }
+        
+
 }

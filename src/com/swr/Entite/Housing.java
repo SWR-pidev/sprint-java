@@ -5,11 +5,59 @@
  */
 package com.swr.Entite;
 
+import java.util.Objects;
+
 /**
  *
  * @author mohamed
  */
 public class Housing {
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.idh;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Housing other = (Housing) obj;
+        if (this.capacity != other.capacity) {
+            return false;
+        }
+        if (this.nbresidents != other.nbresidents) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.rating) != Double.doubleToLongBits(other.rating)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        return true;
+    }
 
    
     private int idh;
@@ -32,6 +80,20 @@ public class Housing {
         this.nbresidents = nbresidents;
         this.type = type;
         this.rating = rating;
+    }
+
+    public Housing(Housing selectedItem) {
+       this.idh= selectedItem.getIdh();
+       this.name=selectedItem.getName();
+       this.description=selectedItem.getDescription();
+       this.address=selectedItem.getAddress();
+       this.location=selectedItem.getLocation();
+       this.capacity=selectedItem.getCapacity();
+       this.nbresidents=selectedItem.getNbresidents();
+       this.nbresidents=selectedItem.getNbresidents();
+       this.type=selectedItem.getType();
+       this.rating=selectedItem.getRating();
+       
     }
 
     public double getRating() {

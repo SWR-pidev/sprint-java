@@ -102,13 +102,10 @@ public class HousingService implements IHousingService {
 
     @Override
     public Housing getHousingById(int id) throws SQLException {
-        pste=con.prepareStatement("Select * from housing where idh=? ");
-        pste.setInt(1, id);
-        ResultSet rs= pste.executeQuery();
-         if (rs.isBeforeFirst()) {
-            System.out.println("*********** Housing doesn't Exist !**********");
-            return null;}
-        else {
+        ste=con.createStatement();
+        ResultSet rs=ste.executeQuery("select * from `housing`  where `idh`='"+id+"';");
+        
+        while(rs.first()){
         int idh=rs.getInt(1);
                String name= rs.getString(2);
                String description=rs.getString("description");
@@ -117,21 +114,21 @@ public class HousingService implements IHousingService {
                int capacity=rs.getInt("capacity");
                int nbresidents=rs.getInt("nbresidents");
                String type=rs.getString("type");
+               
         Housing h= new Housing(idh,name,description,address, location,capacity,nbresidents,type);
         return h;
         }
+        return null;
+
         
     }
 
     @Override
     public Housing getHousingByName(String nom) throws SQLException {
-         pste=con.prepareStatement("Select * from housing where name=? ");
-        pste.setString(1, nom);
-        ResultSet rs= pste.executeQuery();
-        if (rs.isBeforeFirst()) {
-            System.out.println("*********** Housing doesn't Exist !**********");
-            return null;}
-        else {
+       ste=con.createStatement();
+        ResultSet rs=ste.executeQuery("select * from `housing`  where `name`='"+nom+"';");
+        
+        while(rs.first()){
         int idh=rs.getInt(1);
                String name= rs.getString(2);
                String description=rs.getString("description");
@@ -140,9 +137,13 @@ public class HousingService implements IHousingService {
                int capacity=rs.getInt("capacity");
                int nbresidents=rs.getInt("nbresidents");
                String type=rs.getString("type");
+               
         Housing h= new Housing(idh,name,description,address, location,capacity,nbresidents,type);
         return h;
         }
+        return null;
+
+        
     }
 
     @Override
@@ -207,5 +208,17 @@ public class HousingService implements IHousingService {
         return h;
         }
         return null;
+    }
+
+    @Override
+    public ObservableList<String> getHousingNames() throws SQLException {
+        ObservableList names= FXCollections.observableArrayList();
+        ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select name from housing");
+     while (rs.next()) {  
+         String name= rs.getString("name");
+         names.add(name);
+     }  
+     return names;
     }
 }
