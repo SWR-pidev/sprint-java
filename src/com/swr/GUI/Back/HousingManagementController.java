@@ -6,7 +6,9 @@
 package com.swr.GUI.Back;
 
 import com.swr.Entite.Housing;
+import com.swr.Entite.Rating;
 import com.swr.Service.HousingService;
+import com.swr.Service.RatingService;
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.InfoWindow;
 import com.teamdev.jxmaps.LatLng;
@@ -114,8 +116,9 @@ public class HousingManagementController implements Initializable {
     private TableColumn<?, ?> col_NbRes;
     @FXML
     private TableColumn<?, ?> col_Location;
-   
+    RatingService RatC= RatingService.getInstance();
     // Local variables 
+    ObservableList<Rating> oblistR = FXCollections.observableArrayList();
     ObservableList<Housing> oblist = FXCollections.observableArrayList();
     LatLng location = new LatLng();
     
@@ -199,6 +202,7 @@ public class HousingManagementController implements Initializable {
         
         try {
             oblist= (ObservableList<Housing>) hs.getAllHousings();
+            
             col_Name.setCellValueFactory(new PropertyValueFactory<>("name"));
             col_Desc.setCellValueFactory(new PropertyValueFactory<>("description"));
             col_Address.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -330,6 +334,15 @@ public class HousingManagementController implements Initializable {
         if (event.getClickCount()==2){
         SelectedCell();
         }
+        else if (event.getClickCount()==3) {
+            try {
+                     redToRating();
+            } catch (IOException ex) {
+                Logger.getLogger(HousingManagementController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(HousingManagementController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+   }
     }
 
     @FXML
@@ -405,6 +418,35 @@ public class HousingManagementController implements Initializable {
                 
  
                 newWindow.show();
+    }
+    
+    private void redToRating() throws IOException, SQLException {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Ratings.fxml"));
+        Parent tableViewParent = loader.load();
+        Scene tableViewScene = new Scene(tableViewParent,500, 500);
+        RatingsController Rc = loader.getController();
+        
+         oblistR= RatC.getAllRatingsOfHousing(Htable.getSelectionModel().getSelectedItem().getIdh());
+            Rc.col_R.setCellValueFactory(new PropertyValueFactory<>("rating"));
+            Rc.col_feed.setCellValueFactory(new PropertyValueFactory<>("feedback"));
+            
+            Rc.txtlbl.setText(Rc.txtlbl.getText()+Htable.getSelectionModel().getSelectedItem().getName());
+            
+            
+            Rc.tableR.setItems(oblistR);
+      
+        
+        
+ 
+        
+        //This line gets the Stage information
+         
+
+        Stage newWindow = new Stage();
+                newWindow.setTitle("Ratings");
+                newWindow.setScene(tableViewScene);
+                newWindow.showAndWait();
     }
         
 

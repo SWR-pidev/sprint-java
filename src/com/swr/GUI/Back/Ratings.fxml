@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swr.GUI.Back.RatingsController">
+   <children>
+      <TextField fx:id="tfSearch" layoutX="34.0" layoutY="67.0" onKeyTyped="#recherche" prefHeight="26.0" prefWidth="372.0" promptText="Search.." />
+      <Label fx:id="txtlbl" alignment="TOP_LEFT" layoutX="34.0" layoutY="23.0" prefHeight="28.0" prefWidth="386.0" text="Ratings of :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableR" layoutX="34.0" layoutY="108.0" prefHeight="330.0" prefWidth="385.0">
+        <columns>
+          <TableColumn fx:id="col_R" editable="false" prefWidth="100.0" text="Rating" />
+            <TableColumn fx:id="col_feed" editable="false" prefWidth="265.5999816894531" text="Feedback" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

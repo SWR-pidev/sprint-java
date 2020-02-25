@@ -15,6 +15,8 @@ import java.util.List;
 import com.swr.Entite.Rating;
 import com.swr.IService.IRatingService;
 import com.swr.Utils.DataBase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -93,8 +95,8 @@ public class RatingService implements IRatingService {
   }
 
     @Override
-    public List<Rating> getAllRatingsOfHousing(int id) throws SQLException {
-        List<Rating> arr=new ArrayList<>();
+    public ObservableList<Rating> getAllRatingsOfHousing(int id) throws SQLException {
+        ObservableList<Rating> arr=FXCollections.observableArrayList();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from ratings where `idh`="+id+";");
     
