@@ -36,9 +36,6 @@ public class Deliveryman {
         this.mail = mail;
     }
 
-
-   
-
     public int getidDman() {
         return idDman;
     }

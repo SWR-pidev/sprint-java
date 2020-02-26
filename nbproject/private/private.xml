@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/Goods.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/GoodCreation.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/FrontHome.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/Items.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/HousingManagement.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/Ratings.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/HousingFrontController.java</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/HousingDetails.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Front/HousingFront.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/BackHome.fxml</file>
-            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/ItemsManagement.fxml</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/Deliveryman.fxml</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/Service/ServiceDelivery.java</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/DeliveryHome.fxml</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/BackMain.java</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/Controller.java</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/GUI/Back/DeliverymanController.java</file>
+            <file>file:/C:/Users/moham/Desktop/Gitswr/sprint-java/src/com/swr/Utils/DataBase.java</file>
         </group>
     </open-files>
 </project-private>

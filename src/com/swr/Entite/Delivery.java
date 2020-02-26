@@ -13,24 +13,24 @@ public class Delivery {
     private int IdDe ;
     private int idDman ;
     private String DateD ;
-    private int idItem ;
+    private String item ;
 
-    public Delivery(int IdDe, int idDman, String DateD, int idItem) {
+    public Delivery(int IdDe, int idDman, String DateD, String item) {
         this.IdDe = IdDe;
         this.idDman = idDman;
         this.DateD = DateD;
-        this.idItem = idItem;
+        this.item = item;
     }
 
-    public Delivery(int idDman, String DateD, int idItem) {
+    public Delivery(int idDman, String DateD, String item) {
         this.idDman = idDman;
         this.DateD = DateD;
-        this.idItem = idItem;
+        this.item = item;
     }
 
-    public Delivery(String DateD, int idItem) {
+    public Delivery(String DateD, String item) {
         this.DateD = DateD;
-        this.idItem = idItem;
+        this.item = item;
     }
 
     public int getIdDe() {
@@ -57,18 +57,23 @@ public class Delivery {
         this.DateD = DateD;
     }
 
-    public int getIdItem() {
-        return idItem;
+    public String getitem() {
+        return item;
     }
 
-    public void setIdItem(int idItem) {
-        this.idItem = idItem;
+    public void setitem(String item) {
+        this.item = item;
     }
 
     @Override
     public String toString() {
-        return "delivery{" + "IdDe=" + IdDe + ", idDman=" + idDman + ", DateD=" + DateD + ", idItem=" + idItem + '}';
+        return "Delivery{" + "IdDe=" + IdDe + ", idDman=" + idDman + ", DateD=" + DateD + ", item=" + item + '}';
     }
+
+    
+
+    
+
     
     
 }

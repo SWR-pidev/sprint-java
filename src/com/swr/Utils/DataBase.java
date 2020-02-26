@@ -21,9 +21,7 @@ public class DataBase {
     private DataBase() {
          try {
              con=DriverManager.getConnection(url, login, pwd);
-             System.out.println("**************************************");
-             System.out.println("        Connection Established");
-             System.out.println("**************************************");
+            
             
          } catch (SQLException ex) {
              System.out.println(ex);

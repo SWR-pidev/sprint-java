@@ -7,11 +7,15 @@ package com.swr.GUI.Front;
 
 import com.swr.Entite.goods;
 import com.swr.Service.Servicegoods;
+
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,14 +51,19 @@ Servicegoods i = new Servicegoods();
     private TextField btnstatus;
     private TextField btnquant;
     @FXML
-    private ComboBox<?> comboH;
+    private ComboBox<String> chooses;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    try {
+    List<String> Ls= new ArrayList();
+    Ls.add("waiting");
+    Ls.add("delivered");
+    chooses.setItems(FXCollections.observableArrayList(Ls));
+    
+        try {
         initTable();
     } catch (SQLException ex) {
         Logger.getLogger(GoodsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +84,6 @@ Servicegoods i = new Servicegoods();
         itemc.setCellValueFactory(new PropertyValueFactory<>("item"));
         quantc.setCellValueFactory(new PropertyValueFactory<>("Qcollected"));
         statc.setCellValueFactory(new PropertyValueFactory<>("status"));
-        System.out.println(oblistt);
         tablegoods.setItems(oblistt);
 	}
     
@@ -88,5 +96,25 @@ Servicegoods i = new Servicegoods();
         quantc.setText("");
         statc.setText("");
         
+    }
+
+//    @FXML
+@FXML
+    private void choose(ActionEvent event) throws SQLException {
+//        oblist=tablegoods.getSelectionModel().getSelectedItems();
+//     
+//     ServiceDelivery s=new ServiceDelivery();
+//     s.assign(choose.getSelectionModel().getSelectedItem(), oblist.get(0).getIdDe());
+//     inittab();
+//        JOptionPane.showMessageDialog(null, choose.getSelectionModel().getSelectedItem() + " a été assigné à cette livraison son id est " + oblist.get(0).getIdDe(), "info", 1);
+     
+        oblistt= (ObservableList<goods>) i.readAll();
+    List<goods>  L=  oblistt.stream().filter(e->e.getStatus().equals(chooses.getSelectionModel().getSelectedItem())).collect(Collectors.toList());
+        ObservableList<goods> ob= FXCollections.observableArrayList(L);
+        itemc.setCellValueFactory(new PropertyValueFactory<>("item"));
+        quantc.setCellValueFactory(new PropertyValueFactory<>("Qcollected"));
+        statc.setCellValueFactory(new PropertyValueFactory<>("status"));
+        tablegoods.setItems(ob);
+    
     }
 }
